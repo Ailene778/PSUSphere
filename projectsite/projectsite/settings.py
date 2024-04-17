@@ -5,9 +5,9 @@ from django.core.management.utils import get_random_secret_key
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', get_random_secret_key())
-DEBUG = False  # Set to False in production
+DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', 'example.com']  # Update with your production domain
+ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', '127.0.0.1', '::1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
