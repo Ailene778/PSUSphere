@@ -1,12 +1,13 @@
 import os
 from pathlib import Path
+from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your_secret_key_here')
-DEBUG = True
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', get_random_secret_key())
+DEBUG = False  # Set to False in production
 
-ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['psusphere.pythonanywhere.com', 'example.com']  # Update with your production domain
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -15,8 +16,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "studentorg",
-    "widget_tweaks",
+    'studentorg',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +79,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     BASE_DIR / 'static',
-)
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
