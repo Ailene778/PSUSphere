@@ -9,18 +9,23 @@ class HomePageView(ListView):
     model = Organization
     context_object_name = 'home'
     template_name = "home.html"
-
-class OrganizationList(ListView):
+    
+class OrganizationListView(ListView):
     model = Organization
-    context_object_name = 'organization'  # Corrected context_object_name
-    template_name = 'org_list.html'
-    paginate_by = 5
+    template_name = 'organization_list.html'
+    context_object_name = 'organizations'
 
 class OrganizationCreateView(CreateView):
     model = Organization
     form_class = OrganizationForm
     template_name = 'org_add.html'
     success_url = reverse_lazy('organization-list')  # Corrected success_url
+    
+class OrganizationUpdateView(UpdateView):
+    model = Organization
+    form_class = OrganizationForm
+    template_name = 'org_update.html'  # Update this with your template name
+    success_url = reverse_lazy('organization-list')
 
 class OrganizationDeleteView(DeleteView):
     model = Organization
