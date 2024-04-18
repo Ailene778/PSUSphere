@@ -9,11 +9,12 @@ class HomePageView(ListView):
     model = Organization
     context_object_name = 'home'
     template_name = "home.html"
-    
+
 class OrganizationListView(ListView):
     model = Organization
-    template_name = 'organization_list.html'
+    template_name = 'org_list.html'
     context_object_name = 'organizations'
+    paginate_by=5
 
 class OrganizationCreateView(CreateView):
     model = Organization
