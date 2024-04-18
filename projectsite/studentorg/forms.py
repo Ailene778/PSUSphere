@@ -1,8 +1,7 @@
-from django.forms import ModelForm
 from django import forms
 from .models import Organization
 
-class OrganizationForm(ModelForm):
+class OrganizationForm(forms.ModelForm):
     class Meta:
         model = Organization
-        fields = "_all_"
+        fields = '__all__' 
