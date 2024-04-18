@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from studentorg.views import HomePageView, OrganizationListView, OrganizationCreateView, OrganizationUpdateView
+from studentorg.views import HomePageView, OrganizationList, OrganizationCreateView
+from studentorg import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
