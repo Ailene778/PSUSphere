@@ -24,7 +24,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="pull-right">
                     <a href="{% url 'organization-add' %}" class="btn btn-success btn-rounded">Add Organization</a>
                 </div>
@@ -49,6 +49,7 @@
                             <td>{{ object.college }}</td>
                             <td>{{ object.description }}</td>
                             <td><a href="organization_list/{{ object.id}}">Edit</a></td>
+                            <td><a href="organization_list/{{ object.id}}">Delete</a></td>
                         </tr>
                         {% empty %}
                         <tr>
