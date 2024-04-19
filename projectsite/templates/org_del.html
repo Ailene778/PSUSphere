@@ -20,6 +20,8 @@
                                 <div class="form-group">
                                     <div class="col-md-12 col-sm-3">
                                         <button type="submit" class="btn btn-primary btn-rounded">Submit</button>
+                                        <a href="{% url 'delete_organization' object.id %}"
+                                            class="btn btn-danger btn-rounded">Delete</a>
                                     </div>
                                 </div>
                             </form>
