@@ -4,7 +4,6 @@ from studentorg.views import (
     HomePageView,
     OrganizationCreateView,
     OrganizationList,
-    OrganizationListView,
     OrganizationUpdateView,
     OrganizationDeleteView  # Added import for OrganizationDeleteView
 )
