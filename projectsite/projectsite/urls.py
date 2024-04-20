@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.urls import path
 from studentorg.views import (
-    HomePageView,
+    HomePageView, OrganizationList,
     OrganizationCreateView,
-    OrganizationList,
     OrganizationUpdateView,
-    OrganizationDeleteView  # Added import for OrganizationDeleteView
+    OrganizationDeleteView  
 )
 
 urlpatterns = [

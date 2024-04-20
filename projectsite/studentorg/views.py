@@ -4,6 +4,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization
 from studentorg.forms import OrganizationForm
 from django.urls import reverse_lazy
+from typing import Any
+from django.db.model.query import QuerySet
+from django.db.models import Q
 
 class HomePageView(ListView):
     model = Organization
@@ -15,6 +18,15 @@ class OrganizationList(ListView):
     template_name = 'org_list.html'
     context_object_name = 'organization'
     paginate_by=5
+
+    def get_queryset(self,*args, **kwargs):
+        qs=super(OrganizationList, self). get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") !=None:
+            query=self.request.GET.get('q')
+            qs= qs.filter(Q(name_icontains=query) | Q(description_icontains=query))
+
+            return qs
+
 
 class OrganizationCreateView(CreateView):
     model = Organization
