@@ -4,12 +4,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization
 from studentorg.forms import OrganizationForm
 from django.urls import reverse_lazy
-from django.utils.decorators import method_required
-from typing import Any
-from django.db.model.query import QuerySet
-from django.db.models import Q
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required  # Added import for login_required
+from django.db.models import Q  # Moved import to this line
 
-@method_decorator(login_required, name-'dispatch')
+@method_decorator(login_required, name='dispatch')  # Fixed the method_decorator syntax
 
 class HomePageView(ListView):
     model = Organization
@@ -20,16 +19,15 @@ class OrganizationList(ListView):
     model = Organization
     template_name = 'org_list.html'
     context_object_name = 'organization'
-    paginate_by=5
+    paginate_by = 5
 
-    def get_queryset(self,*args, **kwargs):
-        qs=super(OrganizationList, self). get_queryset(*args, **kwargs)
-        if self.request.GET.get("q") !=None:
-            query=self.request.GET.get('q')
-            qs= qs.filter(Q(name_icontains=query) | Q(description_icontains=query))
+    def get_queryset(self, *args, **kwargs):
+        qs = super(OrganizationList, self).get_queryset(*args, **kwargs)
+        if self.request.GET.get("q") is not None:  # Changed '!=' to 'is not'
+            query = self.request.GET.get('q')
+            qs = qs.filter(Q(name__icontains=query) | Q(description__icontains=query))  # Fixed '__icontains'
 
-            return qs
-
+        return qs
 
 class OrganizationCreateView(CreateView):
     model = Organization
@@ -40,10 +38,10 @@ class OrganizationCreateView(CreateView):
 class OrganizationUpdateView(UpdateView):
     model = Organization
     form_class = OrganizationForm
-    template_name = 'org_update.html'  # Update this with your template name
+    template_name = 'org_update.html'
     success_url = reverse_lazy('organization-list')
 
 class OrganizationDeleteView(DeleteView):
     model = Organization
     template_name = 'org_del.html'
-    success_url = reverse_lazy('organization-list')  # Corrected success_url
+    success_url = reverse_lazy('organization-list')
