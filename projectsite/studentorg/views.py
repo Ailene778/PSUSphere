@@ -4,9 +4,12 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from studentorg.models import Organization
 from studentorg.forms import OrganizationForm
 from django.urls import reverse_lazy
+from django.utils.decorators import method_required
 from typing import Any
 from django.db.model.query import QuerySet
 from django.db.models import Q
+
+@method_decorator(login_required, name-'dispatch')
 
 class HomePageView(ListView):
     model = Organization
