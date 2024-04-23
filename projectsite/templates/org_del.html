@@ -8,6 +8,7 @@
                     <div class="card-header">
                         <div class="card-title">Delete Organization</div>
                         <div class="card-category">Page Subtitle</div>
+
                     </div>
 
                     <div class="col-md-6">
@@ -17,15 +18,20 @@
                                 {% csrf_token %} {% include 'includes/form.html' %}
                                 <div class="form-group">
                                     <div class="col-md-12 col-sm-3">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
+                                        <button type="submit" class="btn btn-primary btn-rounded">Submit</button>
 
                                     </div>
-                            </form>
+                                </div>
                         </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
+</div>
 </div>
 {% endblock %}
