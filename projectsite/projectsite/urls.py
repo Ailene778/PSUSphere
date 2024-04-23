@@ -20,6 +20,7 @@ from studentorg.views import HomePageView, OrganizationList, OrganizationCreateV
 from studentorg import views
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePageView.as_view(), name='home'),
